@@ -1,5 +1,3 @@
-# Make requests to chess.com and return JSON data
-
 from typing import Any
 
 import httpx
@@ -21,7 +19,7 @@ class ChessComClient:
     url = f"{self.base_url}{path}"
 
     async with httpx.AsyncClient(
-      timeout=30.0,   # seconds
+      timeout=30.0,
       follow_redirects=True,
     ) as client:
       response = await client.get(
@@ -44,6 +42,36 @@ class ChessComClient:
     response.raise_for_status()
     return response.json()
 
+  async def get_text(self, path: str) -> str:
+    url = f"{self.base_url}{path}"
+
+    async with httpx.AsyncClient(
+      timeout=30.0,
+      follow_redirects=True,
+    ) as client:
+      response = await client.get(
+        url,
+        headers={
+          **self.headers,
+          "Accept": "text/plain, application/x-chess-pgn",
+        },
+      )
+
+    if response.status_code == 404:
+      raise HTTPException(
+        status_code=404,
+        detail=f"Not found: {path}",
+      )
+
+    if response.status_code == 429:
+      raise HTTPException(
+        status_code=429,
+        detail="Chess.com rate limit reached. Try again later.",
+      )
+
+    response.raise_for_status()
+    return response.text
+
   async def get_player_profile(
     self,
     username: str,
@@ -56,4 +84,24 @@ class ChessComClient:
   ) -> dict[str, Any]:
     return await self.get_json(
       f"/player/{username}/games/archives"
+    )
+
+  async def get_player_games_by_month(
+    self,
+    username: str,
+    year: int,
+    month: int,
+  ) -> dict[str, Any]:
+    return await self.get_json(
+      f"/player/{username}/games/{year:04d}/{month:02d}"
+    )
+
+  async def get_player_games_by_month_pgn(
+    self,
+    username: str,
+    year: int,
+    month: int,
+  ) -> str:
+    return await self.get_text(
+      f"/player/{username}/games/{year:04d}/{month:02d}/pgn"
     )

@@ -1,6 +1,7 @@
 import re
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import PlainTextResponse
 
 from chesscom_api.chess_client import ChessComClient
 from chesscom_api.schemas import PlayerArchives, PlayerProfile
@@ -10,7 +11,7 @@ app = FastAPI(title="Chess.com Public Data API")
 client = ChessComClient()
 
 
-# String parsing to make username normal
+# Make username normal
 def normalize_username(username: str) -> str:
   username = username.strip().lower()
 
@@ -23,13 +24,22 @@ def normalize_username(username: str) -> str:
   return username
 
 
-# Add a basic endpoint that confirms the API is running
+# Safety check for month numbers
+def validate_month(month: int) -> None:
+  if month < 1 or month > 12:
+    raise HTTPException(
+      status_code=400,
+      detail="Month must be between 1 and 12.",
+    )
+
+
+# Check that API is alive and well
 @app.get("/")
 def health_check() -> dict[str, str]:
   return {"status": "ok"}
 
 
-# Get player data
+# API call
 @app.get("/players/{username}", response_model=PlayerProfile)
 async def get_player(username: str) -> PlayerProfile:
   username = normalize_username(username)
@@ -47,8 +57,7 @@ async def get_player(username: str) -> PlayerProfile:
     last_online=data.get("last_online"),
   )
 
-
-# Get player archives data
+# Define API checkpoint for a given chess.com username
 @app.get(
   "/players/{username}/archives",
   response_model=PlayerArchives,
@@ -60,4 +69,41 @@ async def get_player_archives(username: str) -> PlayerArchives:
   return PlayerArchives(
     username=username,
     archives=data.get("archives", []),
+  )
+
+
+# Get player games by month
+@app.get("/players/{username}/games/{year}/{month}")
+async def get_player_games_by_month(
+  username: str,
+  year: int,
+  month: int,
+) -> dict:
+  username = normalize_username(username)
+  validate_month(month)
+
+  return await client.get_player_games_by_month(
+    username,
+    year,
+    month,
+  )
+
+
+# Get player games by month in pgn format
+@app.get(
+  "/players/{username}/games/{year}/{month}/pgn",
+  response_class=PlainTextResponse,
+)
+async def get_player_games_by_month_pgn(
+  username: str,
+  year: int,
+  month: int,
+) -> str:
+  username = normalize_username(username)
+  validate_month(month)
+
+  return await client.get_player_games_by_month_pgn(
+    username,
+    year,
+    month,
   )
