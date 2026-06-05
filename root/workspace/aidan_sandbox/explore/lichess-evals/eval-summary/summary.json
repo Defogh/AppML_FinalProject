@@ -1,0 +1,165 @@
+{
+  "input_file": "../xgboost/data/raw/lichess_db_standard_rated_2017-05.pgn.zst",
+  "output_file": "../xgboost/data/raw/lichess_db_standard_rated_2017-05.with_eval.pgn.zst",
+  "full_dataset": {
+    "name": "full_dataset",
+    "games": 11693919,
+    "games_with_eval": 957369,
+    "games_with_clock": 11617984,
+    "eval_tags": 61058911,
+    "numeric_eval_tags": 56317080,
+    "mate_eval_tags": 4741831,
+    "clock_tags": 785743087,
+    "pct_games_with_eval": 8.1869,
+    "pct_games_with_clock": 99.3506,
+    "fullmoves": {
+      "count": 11693919,
+      "mean": 2017,
+      "median": 2017,
+      "min": 2017,
+      "max": 2017
+    },
+    "avg_elo": {
+      "count": 11693919,
+      "mean": 1646.288,
+      "median": 1648.5,
+      "min": 763.5,
+      "max": 2933.5
+    },
+    "first_eval_cp": {
+      "count": 957369,
+      "mean": 18.162,
+      "median": 20,
+      "min": -112,
+      "max": 56
+    },
+    "last_eval_cp": {
+      "count": 957369,
+      "mean": 19.214,
+      "median": 0,
+      "min": -12851,
+      "max": 12851
+    },
+    "results": {
+      "1-0": 5804805,
+      "0-1": 5432909,
+      "1/2-1/2": 449978,
+      "*": 6227
+    },
+    "terminations": {
+      "Normal": 7743018,
+      "Time forfeit": 3892734,
+      "Abandoned": 52704,
+      "Unterminated": 4712,
+      "Rules infraction": 751
+    },
+    "speeds": {
+      "Blitz": 5525218,
+      "Bullet": 3321523,
+      "Classical": 2805399,
+      "Correspondence": 41779
+    },
+    "top_time_controls": {
+      "300+0": 2248245,
+      "180+0": 2006316,
+      "60+0": 1858962,
+      "600+0": 1587827,
+      "180+2": 452555,
+      "30+0": 362013,
+      "120+1": 346134,
+      "300+3": 312153,
+      "15+0": 243421,
+      "120+0": 234469,
+      "900+0": 161699,
+      "300+5": 111489,
+      "900+15": 107572,
+      "480+0": 100939,
+      "300+8": 98460,
+      "420+0": 65462,
+      "240+0": 63731,
+      "0+1": 57089,
+      "300+2": 54253,
+      "60+1": 53293
+    }
+  },
+  "eval_subset": {
+    "name": "eval_subset",
+    "games": 957369,
+    "games_with_eval": 957369,
+    "games_with_clock": 952814,
+    "eval_tags": 61058911,
+    "numeric_eval_tags": 56317080,
+    "mate_eval_tags": 4741831,
+    "clock_tags": 61087668,
+    "pct_games_with_eval": 100.0,
+    "pct_games_with_clock": 99.5242,
+    "fullmoves": {
+      "count": 957369,
+      "mean": 2017,
+      "median": 2017,
+      "min": 2017,
+      "max": 2017
+    },
+    "avg_elo": {
+      "count": 957369,
+      "mean": 1628.467,
+      "median": 1624.5,
+      "min": 789.5,
+      "max": 2933.5
+    },
+    "first_eval_cp": {
+      "count": 957369,
+      "mean": 18.162,
+      "median": 20,
+      "min": -112,
+      "max": 56
+    },
+    "last_eval_cp": {
+      "count": 957369,
+      "mean": 19.214,
+      "median": 0,
+      "min": -12851,
+      "max": 12851
+    },
+    "results": {
+      "1-0": 475231,
+      "0-1": 457218,
+      "1/2-1/2": 24864,
+      "*": 56
+    },
+    "terminations": {
+      "Normal": 693606,
+      "Time forfeit": 263610,
+      "Rules infraction": 97,
+      "Abandoned": 56
+    },
+    "speeds": {
+      "Blitz": 368584,
+      "Classical": 339475,
+      "Bullet": 244755,
+      "Correspondence": 4555
+    },
+    "top_time_controls": {
+      "60+0": 156041,
+      "600+0": 149482,
+      "300+0": 130121,
+      "180+0": 101266,
+      "300+3": 43677,
+      "180+2": 41778,
+      "900+15": 25146,
+      "120+1": 21246,
+      "900+0": 19707,
+      "30+0": 18421,
+      "15+0": 13758,
+      "300+5": 13143,
+      "300+8": 11475,
+      "120+0": 11293,
+      "480+0": 9804,
+      "600+5": 8663,
+      "1200+0": 7734,
+      "600+10": 7281,
+      "300+4": 7078,
+      "900+10": 6904
+    }
+  }
+}

@@ -1,0 +1,24 @@
+[project]
+name = "blunder"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.2.0",
+    "ipywidgets>=8.1.8",
+    "joblib>=1.5.3",
+    "lightgbm>=4.6.0",
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.6",
+    "optuna>=4.9.0",
+    "pandas>=3.0.3",
+    "pyarrow>=24.0.0",
+    "python-chess>=1.999",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+    "torch>=2.12.0",
+    "tqdm>=4.67.3",
+    "xgboost>=3.2.0",
+    "zstandard>=0.25.0",
+]

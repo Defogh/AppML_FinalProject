@@ -1,3 +1,7 @@
-root/data/elias_data/
-.venv/
-root/data/villads_data/
+.venv
+.gitignore
+data/
+local/
+uv.lock
+_*
+.*
