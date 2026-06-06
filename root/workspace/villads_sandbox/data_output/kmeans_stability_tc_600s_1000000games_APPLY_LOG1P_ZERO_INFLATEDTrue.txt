@@ -1,0 +1,4 @@
+K-Means stability (n=20000, k=7):
+  seeds: [42, 43, 44]
+  ARI mean: 0.994
+  ARI min : 0.991
