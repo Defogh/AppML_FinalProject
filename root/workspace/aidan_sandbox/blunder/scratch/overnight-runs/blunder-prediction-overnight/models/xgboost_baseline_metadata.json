@@ -1,0 +1,39 @@
+{
+  "name": "xgboost_baseline",
+  "threshold": 0.9400000000000001,
+  "valid_metrics_05": {
+    "model": "xgboost_baseline",
+    "threshold": 0.5,
+    "roc_auc": 0.9237775330690531,
+    "avg_precision": 0.055362352222949995,
+    "balanced_acc": 0.847447690230327,
+    "f1": 0.04341061622940818,
+    "pred_positive_rate": 0.15752691254278914,
+    "true_positive_rate": 0.00413019611034158,
+    "fit_seconds": 170.07260370254517
+  },
+  "valid_metrics_opt": {
+    "model": "xgboost_baseline",
+    "threshold": 0.9400000000000001,
+    "roc_auc": 0.9237775330690531,
+    "avg_precision": 0.055362352222949995,
+    "balanced_acc": 0.6115510896670132,
+    "f1": 0.11790753527469229,
+    "pred_positive_rate": 0.012296888359566244,
+    "true_positive_rate": 0.00413019611034158,
+    "fit_seconds": 170.07260370254517
+  },
+  "test_metrics_opt": {
+    "model": "xgboost_baseline",
+    "threshold": 0.9400000000000001,
+    "roc_auc": 0.9266760070488964,
+    "avg_precision": 0.060886083436740485,
+    "balanced_acc": 0.6167401394413188,
+    "f1": 0.12213005480669531,
+    "pred_positive_rate": 0.012472468654255515,
+    "true_positive_rate": 0.004141083535332406,
+    "fit_seconds": 170.07260370254517
+  },
+  "fit_seconds": 170.07260370254517,
+  "saved_at": "2026-06-05 23:12:32"
+}
