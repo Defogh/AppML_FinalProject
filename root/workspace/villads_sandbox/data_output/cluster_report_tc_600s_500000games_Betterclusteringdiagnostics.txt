@@ -1,0 +1,148 @@
+========================================================================
+  CHESS PLAY-STYLE CLUSTER REPORT
+  Generated : 2026-06-03 12:01:40
+  Run tag   : tc_600s_500000games_Betterclusteringdiagnostics
+  Games     : 59,950
+  TC filter : 600s
+  K-Means k : 7
+========================================================================
+
+SECTION 1 -- CLUSTER OVERVIEW
+----------------------------------------
+  Cluster  0: Cluster 0                       n=   5,878  (  9.8%)
+  Cluster  1: Cluster 1                       n=  13,464  ( 22.5%)
+  Cluster  2: Cluster 2                       n=  10,904  ( 18.2%)
+  Cluster  3: Cluster 3                       n=   2,654  (  4.4%)
+  Cluster  4: Cluster 4                       n=   8,918  ( 14.9%)
+  Cluster  5: Cluster 5                       n=   4,415  (  7.4%)
+  Cluster  6: Cluster 6                       n=  13,717  ( 22.9%)
+
+SECTION 2 -- STANDOUT FEATURES (Z-score vs global median)
+----------------------------------------
+
+  [Cluster 0]  n=5,878 (9.8%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  consec_piece_avg                         23.030        5.000  UP  2.67
+  total_ply_count                         130.390       59.000  UP  2.18
+  promotions                                1.116        0.000  UP  2.17
+  pawn_captures_total                      12.983        7.000  UP  1.63
+  checks_given_white                        7.664        2.000  UP  1.55
+
+  [Cluster 1]  n=13,464 (22.5%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  capture_agression                         0.168        0.130  UP  0.85
+  clock_remaining_avg                       0.706        0.552  UP  0.58
+  white_territory_depth                     3.564        3.000  UP  0.56
+  avg_time_avg                              0.012        0.014  DN  0.33
+  queen_moves_before_10                     1.488        1.000  UP  0.32
+
+  [Cluster 2]  n=10,904 (18.2%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  avg_time_avg                              0.023        0.014  UP  1.34
+  time_variability                          0.025        0.015  UP  0.86
+  opening_pace_avg                          0.016        0.010  UP  0.81
+  clock_remaining_avg                       0.419        0.552  DN  0.50
+  first_capture_move_black                  6.174        5.000  UP  0.37
+
+  [Cluster 3]  n=2,654 (4.4%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  time_variability                          0.059        0.015  UP  3.66
+  opening_pace_avg                          0.037        0.010  UP  3.33
+  avg_time_avg                              0.025        0.014  UP  1.69
+  clock_remaining_avg                       0.388        0.552  DN  0.62
+  first_capture_move_black                  5.931        5.000  UP  0.29
+
+  [Cluster 4]  n=8,918 (14.9%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  white_territory_depth                     1.672        3.000  DN  1.31
+  piece_captures_total                      5.208        9.000  DN  1.00
+  pawn_captures_total                       3.551        7.000  DN  0.94
+  pawn_aggression                           0.081        0.111  DN  0.75
+  clock_remaining_avg                       0.735        0.552  UP  0.69
+
+  [Cluster 5]  n=4,415 (7.4%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  piece_captures_total                      2.239        9.000  DN  1.78
+  pawn_aggression                           0.173        0.111  UP  1.56
+  capture_agression                         0.077        0.130  DN  1.21
+  clock_remaining_avg                       0.841        0.552  UP  1.09
+  total_ply_count                          26.727       59.000  DN  0.99
+
+  [Cluster 6]  n=13,717 (22.9%)
+  Feature                            Cluster mean   Global med   Z-score
+  --------------------------------  -------------  -----------  --------
+  total_ply_count                          85.823       59.000  UP  0.82
+  consec_piece_avg                          9.940        5.000  UP  0.73
+  pawn_captures_total                       9.510        7.000  UP  0.68
+  white_territory_depth                     3.646        3.000  UP  0.64
+  checks_given_white                        4.270        2.000  UP  0.62
+
+SECTION 3 -- PLAYER TYPE DESCRIPTIONS
+----------------------------------------
+
+  Cluster 0
+  =========
+  This cluster tends to plays long games (endgame-oriented); promotes
+  pawns more often than average (endgame fighter).
+
+  Cluster 1
+  =========
+  This cluster tends to high piece-capture rate (tactical,
+  piece-hungry).
+
+  Cluster 2
+  =========
+  This cluster tends to spends above-average time per move (deliberate
+  thinker); burns extra time in the opening (deep thinker or
+  unfamiliar lines); highly variable time usage (erratic or complex
+  positions).
+
+  Cluster 3
+  =========
+  This cluster tends to spends above-average time per move (deliberate
+  thinker); burns extra time in the opening (deep thinker or
+  unfamiliar lines); highly variable time usage (erratic or complex
+  positions).
+
+  Cluster 4
+  =========
+  This cluster tends to finishes games with plenty of clock remaining
+  (efficient).
+
+  Cluster 5
+  =========
+  This cluster tends to heavy pawn-trading (open-position seeker);
+  finishes games with plenty of clock remaining (efficient); games end
+  early (decisive / sharp play or blunder-prone).
+
+  Cluster 6
+  =========
+  This cluster tends to plays long games (endgame-oriented).
+
+SECTION 4 -- KEY FEATURE GLOBAL STATS
+----------------------------------------
+  Feature                               Mean    Median       Std
+  --------------------------------  --------  --------  --------
+  avg_elo                           1529.532  1538.500   251.988
+  check_density_avg                    0.081     0.074     0.054
+  capture_agression                    0.132     0.130     0.045
+  time_pressure_avg                    0.049     0.000     0.499
+  avg_time_avg                         0.015     0.014     0.006
+  clock_remaining_avg                  0.545     0.552     0.265
+  opening_pace_avg                     0.012     0.010     0.008
+  time_variability                     0.018     0.015     0.012
+  queen_moves_before_10                1.394     1.000     1.507
+  consec_piece_avg                     7.223     5.000     6.758
+  total_ply_count                     64.646    59.000    32.709
+  promotions                           0.188     0.000     0.514
+  en_passant_captures                  0.027     0.000     0.163
+
+========================================================================
+  End of report  --  tc_600s_500000games_Betterclusteringdiagnostics
+========================================================================
