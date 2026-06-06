@@ -5,3 +5,5 @@ local/
 uv.lock
 _*
 .*
+root/workspace/elias_sandbox/cache/
+root/data/elias_data/
