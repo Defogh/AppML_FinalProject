@@ -1,0 +1,42 @@
+PGN eval-filter summary
+========================================================================
+Input file:  ../xgboost/data/raw/lichess_db_standard_rated_2017-05.pgn.zst
+Output file: ../xgboost/data/raw/lichess_db_standard_rated_2017-05.with_eval.pgn.zst
+
+Full dataset
+------------------------------------------------------------------------
+Games:             11,693,919
+Games with eval:   957,369 (8.19%)
+Games with clocks: 11,617,984 (99.35%)
+Eval tags:         61,058,911
+Numeric eval tags: 56,317,080
+Mate eval tags:    4,741,831
+Clock tags:        785,743,087
+Fullmoves:         {'count': 11693919, 'mean': 2017, 'median': 2017, 'min': 2017, 'max': 2017}
+Average Elo:       {'count': 11693919, 'mean': 1646.288, 'median': 1648.5, 'min': 763.5, 'max': 2933.5}
+Speeds:            {'Blitz': 5525218, 'Bullet': 3321523, 'Classical': 2805399, 'Correspondence': 41779}
+Results:           {'1-0': 5804805, '0-1': 5432909, '1/2-1/2': 449978, '*': 6227}
+Terminations:      {'Normal': 7743018, 'Time forfeit': 3892734, 'Abandoned': 52704, 'Unterminated': 4712, 'Rules infraction': 751}
+
+Filtered eval subset
+------------------------------------------------------------------------
+Games written:     957,369
+Eval tags:         61,058,911
+Numeric eval tags: 56,317,080
+Mate eval tags:    4,741,831
+Clock tags:        61,087,668
+Fullmoves:         {'count': 957369, 'mean': 2017, 'median': 2017, 'min': 2017, 'max': 2017}
+Average Elo:       {'count': 957369, 'mean': 1628.467, 'median': 1624.5, 'min': 789.5, 'max': 2933.5}
+First eval cp:     {'count': 957369, 'mean': 18.162, 'median': 20, 'min': -112, 'max': 56}
+Last eval cp:      {'count': 957369, 'mean': 19.214, 'median': 0, 'min': -12851, 'max': 12851}
+Speeds:            {'Blitz': 368584, 'Classical': 339475, 'Bullet': 244755, 'Correspondence': 4555}
+Results:           {'1-0': 475231, '0-1': 457218, '1/2-1/2': 24864, '*': 56}
+Terminations:      {'Normal': 693606, 'Time forfeit': 263610, 'Rules infraction': 97, 'Abandoned': 56}
+
+Notes
+------------------------------------------------------------------------
+[%eval 0.35] means +35 centipawns for White.
+[%eval -1.20] means -120 centipawns, favoring Black.
+[%eval #5] means forced mate in 5.
+This script does not run Stockfish.
+It only extracts evals already present in the PGN.
