@@ -1,0 +1,39 @@
+{
+  "name": "dummy_prior",
+  "threshold": 0.01,
+  "valid_metrics_05": {
+    "model": "dummy_prior",
+    "threshold": 0.5,
+    "roc_auc": 0.5,
+    "avg_precision": 0.0042779087313719886,
+    "balanced_acc": 0.5,
+    "f1": 0.0,
+    "pred_positive_rate": 0.0,
+    "true_positive_rate": 0.0042779087313719886,
+    "fit_seconds": 4.453711032867432
+  },
+  "valid_metrics_opt": {
+    "model": "dummy_prior",
+    "threshold": 0.01,
+    "roc_auc": 0.5,
+    "avg_precision": 0.0042779087313719886,
+    "balanced_acc": 0.5,
+    "f1": 0.0,
+    "pred_positive_rate": 0.0,
+    "true_positive_rate": 0.0042779087313719886,
+    "fit_seconds": 4.453711032867432
+  },
+  "test_metrics_opt": {
+    "model": "dummy_prior",
+    "threshold": 0.01,
+    "roc_auc": 0.5,
+    "avg_precision": 0.0043864322940545255,
+    "balanced_acc": 0.5,
+    "f1": 0.0,
+    "pred_positive_rate": 0.0,
+    "true_positive_rate": 0.0043864322940545255,
+    "fit_seconds": 4.453711032867432
+  },
+  "fit_seconds": 4.453711032867432,
+  "saved_at": "2026-06-06 10:05:27"
+}
