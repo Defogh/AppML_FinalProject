@@ -5,5 +5,14 @@ local/
 uv.lock
 _*
 .*
+*.csv
 root/workspace/elias_sandbox/cache_preproc/
 root/workspace/elias_sandbox/cache/
+scratch/
+old/
+notes/
+models/
+plot-data/
+*.joblib
+*.npy
+*.db
