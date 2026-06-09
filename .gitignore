@@ -1,9 +1,0 @@
-.venv
-.gitignore
-data/
-local/
-uv.lock
-_*
-.*
-root/workspace/elias_sandbox/cache_preproc/
-root/workspace/elias_sandbox/cache/
