@@ -272,16 +272,14 @@ def extract_features_dataframe(df: pd.DataFrame, n_jobs: int = -1) -> pd.DataFra
 
 # ── balanced sample weights ───────────────────────────────────────────────────
 
-def compute_elo_sample_weights(elo_series: pd.Series,
-                               bins: list[int] | None = None) -> np.ndarray:
-    """
-    Inverse-frequency weights per Elo stratum so rare high-Elo games
-    count proportionally more during training.
-    """
+def compute_elo_sample_weights(elo_series, bins=None, max_ratio=5.0):
     if bins is None:
         bins = [0, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2500, 4000]
     labels   = pd.cut(elo_series, bins=bins, labels=False, right=True)
     counts   = labels.value_counts()
     inv_freq = 1.0 / counts
     weights  = labels.map(inv_freq).astype(float).fillna(1.0).values
+    weights  = weights / weights.mean()
+    # cap the maximum ratio so no bracket is oversampled more than max_ratio times
+    weights  = np.clip(weights, 0, max_ratio)
     return weights / weights.mean()
