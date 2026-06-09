@@ -1,10 +1,8 @@
-# Generated chess feature extraction pipeline
-
-This generated folder is intended to be copied into your project root.
+# Chess feature extraction pipeline
 
 ## Dependencies
 
-Add these to your `uv` environment:
+For your `uv` environment:
 
 ```bash
 uv add pandas numpy zstandard python-chess pyarrow matplotlib ipykernel
