@@ -12,7 +12,10 @@ def parse_args():
   parser.add_argument(
     "--input",
     required=True,
-    help="Path to .pgn.zst input file.",
+    help=(
+      "Path to .pgn.zst input file. Missing canonical Lichess standard "
+      "monthly files are downloaded automatically."
+    ),
   )
   parser.add_argument(
     "--output-dir",

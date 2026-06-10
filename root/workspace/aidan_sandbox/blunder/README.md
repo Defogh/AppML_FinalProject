@@ -36,6 +36,10 @@ uv run python process_data.py \
   --format parquet
 ```
 
+If the `--input` path is a canonical Lichess standard monthly filename, such as
+`lichess_db_standard_rated_2017-05.pgn.zst`, the pipeline downloads it from
+`https://database.lichess.org/standard/` when it is missing.
+
 The command writes:
 
 ```text

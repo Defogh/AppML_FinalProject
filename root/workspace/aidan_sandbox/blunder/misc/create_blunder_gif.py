@@ -34,6 +34,13 @@ BLACK_LINE = (210, 74, 67)
 GREEN = (32, 145, 92)
 RED = (200, 57, 54)
 
+BUILD_HINT = """cd blunder
+uv run python process_data.py \\
+  --input data/raw/lichess_db_standard_rated_2017-05.pgn.zst \\
+  --output-dir data/processed/lichess-2017-05-eval-all \\
+  --batch-size 1000 \\
+  --format parquet"""
+
 PIECE_UNICODE = {
     "P": "♙",
     "N": "♘",
@@ -94,6 +101,21 @@ def loss_for_row(row: pd.Series) -> float:
 
 
 def load_game() -> tuple[pd.Series, pd.DataFrame]:
+    missing = [
+        path
+        for path in [DATA_DIR / "games.parquet", DATA_DIR / "plies.parquet"]
+        if not path.exists()
+    ]
+    if missing:
+        missing_text = "\n".join(f"  - {path}" for path in missing)
+        raise FileNotFoundError(
+            "Missing processed data files:\n"
+            f"{missing_text}\n\n"
+            "These parquet files are generated artifacts and are not downloaded "
+            "automatically.\n"
+            f"Regenerate them with:\n{BUILD_HINT}"
+        )
+
     game = pd.read_parquet(
         DATA_DIR / "games.parquet", filters=[("game_index", "=", GAME_INDEX)]
     ).iloc[0]
