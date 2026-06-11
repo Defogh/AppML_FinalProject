@@ -26,6 +26,7 @@ import io
 import json
 import re
 import statistics
+import urllib.request
 from pathlib import Path
 from typing import Optional
 
@@ -37,6 +38,9 @@ HEADER_RE = re.compile(r'^\[(\w+)\s+"(.*)"\]\s*$')
 EVAL_RE = re.compile(r"\[%eval\s+([^\]\s]+)\]")
 CLK_RE = re.compile(r"\[%clk\s+([^\]]+)\]")
 FULLMOVE_RE = re.compile(r"(?<!\d)(\d+)\.(?:\.\.)?")
+LICHESS_STANDARD_RE = re.compile(
+  r"^lichess_db_standard_rated_(\d{4})-(\d{2})\.pgn\.zst$"
+)
 
 
 def text_reader(path: Path) -> io.TextIOBase:
@@ -80,8 +84,28 @@ def iter_games(path: Path):
       else:
         current.append(line)
 
-    if current:
-      yield "".join(current).strip() + "\n\n"
+      if current:
+        yield "".join(current).strip() + "\n\n"
+
+
+def ensure_lichess_pgn_zst(path: Path) -> Path:
+  if path.exists():
+    return path
+
+  if LICHESS_STANDARD_RE.match(path.name) is None:
+    raise FileNotFoundError(
+      f"Missing PGN input: {path}\n"
+      "Only canonical Lichess standard monthly files can be downloaded "
+      "automatically. Expected a filename like "
+      "lichess_db_standard_rated_2017-05.pgn.zst."
+    )
+
+  url = f"https://database.lichess.org/standard/{path.name}"
+  path.parent.mkdir(parents=True, exist_ok=True)
+  print(f"Downloading missing Lichess PGN: {url}")
+  urllib.request.urlretrieve(url, path)
+  print(f"Wrote: {path}")
+  return path
 
 
 def parse_headers(game: str) -> dict[str, str]:
@@ -647,7 +671,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
   args = parse_args()
 
-  input_path = args.input
+  input_path = ensure_lichess_pgn_zst(args.input)
   output_path = args.output or default_output(input_path)
   summary_dir = args.summary_dir
   plots_dir = summary_dir / "plots"
@@ -719,4 +743,3 @@ def main() -> None:
 
 if __name__ == "__main__":
   main()
-

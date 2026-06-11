@@ -6,6 +6,7 @@ import re
 
 import zstandard as zstd
 
+from chess_eval_features.data_sources import ensure_lichess_pgn_zst
 from chess_eval_features.models import PgnGame
 
 
@@ -13,7 +14,7 @@ class PgnZstParser:
   """Stream games from a ``.pgn.zst`` file without loading it fully."""
 
   def __init__(self, path):
-    self.path = Path(path)
+    self.path = ensure_lichess_pgn_zst(Path(path))
 
   def parse_first_n_with_eval(self, n_games):
     """Return the first ``n_games`` that contain ``%eval``."""
